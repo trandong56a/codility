@@ -43,7 +43,8 @@ entity LoanPlanResposne{
 	ltvThreshold Float,
 	ltvApprover Float,
 	ltvMaxProposal Float,
-	isGroup1 Boolean
+	isGroup1 Boolean,
+	collateralLimit Float
 }
 
 entity Collateral{
@@ -56,14 +57,15 @@ entity Collateral{
 entity CollateralResponse{
 	isvOtherCollateral Float,
 	ttlOtherCollateral Float,
-	ccOtherCollateral Float,
-	collateralLimit Float
+	ccOtherCollateral Float
 }
 
 entity Dti{
+	ownerShip String,
+	dtiReal Float,
+	dtiRealByOCD Float,
 	dtiOcd Float,
-	dtiMax Float,
-	dtiMaxCopayment Float
+	dtiMax Float
 }
 
 entity Score{
@@ -92,8 +94,7 @@ entity SalaryIncome{
 	paymentMethod String,
 	numOvertime Float,
 	isIPO Boolean,
-	appoverProposal Float,	
-	salaryCalculate Float
+	appoverProposal Float
 }
 
 entity RetireIncome{
@@ -291,9 +292,7 @@ entity PolicyResult{
 }
 
 entity RoutingResult{
-	routingFlow Long,
-	branch String,
-	floor String
+	routingFlow Long	
 }
 
 entity ApproverInfo{
@@ -371,7 +370,6 @@ relationship OneToOne {
 	Case{Lgd} to Lgd,
 	Case{Limit} to Limit,
 	Case{ApproverInfo} to ApproverInfo,
-	Case{Dti} to Dti,
 	Case{LoanPlan} to LoanPlan,	
 	Case{CreditCardLimit} to CreditCardLimit,
 	Case{PolicyResult} to PolicyResult,
@@ -408,8 +406,10 @@ relationship OneToMany{
 	BusinessItem{CheckList} to CheckList,
 	TrustedItem{CheckList} to CheckList,
 	DeclareItem{CheckList} to CheckList,
+	ROAIncome{CheckList} to CheckList,
 	ROAItem{TCBond} to TCBond,
 	ROAItem{RealEstate} to RealEstate,
 	ROAItem{PassBook} to PassBook,
-	DeclareIncome{DeclareItem} to DeclareItem	
+	DeclareIncome{DeclareItem} to DeclareItem,
+	Case{Dti} to Dti
 }
