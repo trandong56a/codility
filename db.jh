@@ -1,0 +1,415 @@
+entity Case{
+	caseId String,
+	systemId String,
+	createdDate LocalDate,
+	createdBy String
+}
+
+entity PersonalInfo{
+	citizenID String,
+	age Long,
+	maritalStatus String,
+	educationDegree String,
+	mainTravelVerhicle String,
+	accommodationType String,
+	numDependant Long,
+	t24CustomerID String,
+	PriorityIdentifier String,
+	livingPeriodCurrentAddress Long,
+	relationship String,
+	nationalCode String,
+	type String
+}
+
+entity LoanPlan{
+	projectCode String,
+	productCode String,
+	tenor Long,
+	paymentMethod String,
+	originalGracePeriod Long,
+	interestRate Float,
+	loanAmount Float,
+	spouseCopaymentDuty Float,
+	isGroup1 Boolean
+}
+
+entity LoanPlanResposne{
+	iSVProduct Float,
+	DTImaxDTN Float,
+	InterestDiscount Float,
+	tTLCollateralByLoan Float,
+	ccCollateralByLoan Float,
+	acceptedRate Float,
+	ltvThreshold Float,
+	ltvApprover Float,
+	ltvMaxProposal Float,
+	isGroup1 Boolean
+}
+
+entity Collateral{
+	isCollateralFromLoan Boolean,	
+	code String,
+	assetAmount Float,
+	isv Float
+}
+
+entity CollateralResponse{
+	isvOtherCollateral Float,
+	ttlOtherCollateral Float,
+	ccOtherCollateral Float,
+	collateralLimit Float
+}
+
+entity Dti{
+	dtiOcd Float,
+	dtiMax Float,
+	dtiMaxCopayment Float
+}
+
+entity Score{
+	scoreModel String,
+	score Long,
+	customerGrade String
+}
+
+entity SalaryIncome{
+	ownerShip String,
+	mthOfExperienceAtCurComp Float,
+	regularIncomecanDocumented Float,
+	unregularIncomecanDocumented Float,
+	incomecanNotDocumented Float,
+	companyLevel1 String,
+	companyLevel2 String,
+	companyLevel3 String,
+	companyLevel4 String,
+	companyAddress String,
+	industry String,
+	professional String,
+	position String,
+	contractType String,
+	experiences Float,
+	experienceAtCurComp Float,
+	paymentMethod String,
+	numOvertime Float,
+	isIPO Boolean,
+	appoverProposal Float,	
+	salaryCalculate Float
+}
+
+entity RetireIncome{
+	ownerShip String,
+	amount Float,
+	paymentMethod String,
+	approverProposal Float
+}
+
+entity VehicleIncome{
+	sumAmount Float,
+	approverProposal Float
+}
+
+entity VehicleItem{
+	ownerShip String,
+	monthlyIncomeInput Float,
+	paymentMethod String,
+	documentShowIncome String,
+	originalPrice Float,
+	numOfKm Float,
+	numOfReceiverMoney Float,
+	experienceForRent Float,
+	ownershipPerson String,
+	vendor String,
+	model String,
+	productionYear Float,
+	contractTerm Float,
+	amount Float,
+	appoverProposal Float
+}
+
+entity HouseRentIncome{
+	sumAmount Float,
+	approvalProposal Float
+}
+
+entity HouseRentItem{
+	ownerShip String,
+	monthlyIncome Float,
+	paymentMethod String,
+	typeOfHouseRent String,
+	ownerShipType String,
+	locationOfCollateral String,
+	documentShowIncome String,
+	experinceForRent Float,
+	occurrenceOfYear Float,
+	frequencyReceiverMoney Float,
+	priceByJJupiter Float,
+	roa Float,
+	province String,
+	approvalProposal Float,
+	amount Float
+}
+
+entity BusinessIncome{
+	sumAmount Float,
+	approverProposal Float
+}
+
+entity BusinessItem{
+	monthsCurrentCompany Float,
+	mainBusinessLine String,
+	ownerShip String,
+	businessType String,
+	businessLine1 String,
+	province String,
+	contributionRate Float,
+	activeTime Float,
+	profit Float,
+	avgIncome6Mth Float,
+	noOfEmployees Long,
+	amount Float,
+	approverProposal Float
+}
+
+entity SeftBusiness{
+	mainBusinessLineGroup String,
+	activeTimeMainBiz Float,
+	businessAddressNew String,
+	bizLocationOwnershipType String,
+	distributeType String,
+	bookManagementMethod String,
+	physicalFacilities String,
+	timeOfRelationWithPartner Float,
+	credibilityWithSuppliers String,
+	inheritedFromFamily Boolean
+}
+
+entity ROAIncome{
+	ownerShip String,
+	sumAmount Float,
+	approvalProposal Float
+}
+
+entity ROAItem{
+	type String,
+	amount Float,
+	rate Float,
+	income Float
+}
+
+entity TCBond{
+	income Float
+}
+
+entity RealEstate{
+	jupiterValue Float,
+	rateOfReturn Float,
+	approvalProposal Float,
+	collateralType String
+}
+
+entity PassBook{
+	income Float	
+}
+
+entity TrustedIncome{
+	ownerShip String,
+	trustedGroup String,
+	sumAmount Float,
+	approvalProposal Float
+}
+
+entity TrustedItem{
+	incomeType String,
+	amount Float,
+	rate Float,
+	income Float
+}
+
+entity DeclareIncome{
+	ownerShip String,	
+	sumAmount Float,
+	approvalProposal Float
+}
+
+entity DeclareItem{
+	type String,
+	amount Float	
+}
+
+entity IncomeResponse{
+	frameIncome Float,
+	frameFrom Float,
+	frameTo Float,
+	idcProposal Float,
+	requireVerify String,
+	ocdIncome Float,
+	koc String,
+	kocRate Float,
+	kproRate Float,
+	kpowRate Float,
+	acceptedValue Float,
+	acceptedDeclarevalue Float,
+	verifyType String,
+	violatePolicy String
+}
+
+entity Pd{
+	pd Float,
+	pdBase Float
+}
+
+entity CreditCardLimit{
+	proposalLimit Float,
+	expectedCardLimit Float
+}
+
+entity El{
+	el Float,
+	elThreshold Float
+}
+
+entity Lgd{
+	lgd Float
+}
+
+entity Limit{
+	creditLimitAtOther Float,
+	creditLimitCurrentAtTCB Float,
+	reqMortgageLimit Float,
+	dutyAmount Float,
+	creditCardLimitAtOther Float,
+	creditCardLimitCurrentAtTCB Float,
+	proposalLimit Float,
+	isPassLimit Boolean
+}
+
+entity PolicyResult{
+	isViolateknockOutPolicies Boolean,
+	isViolateSeniorApprovalPolicies Boolean,
+	isViolateJuniorApprovalPolicies Boolean,
+	isbranchViolatedELlimit Boolean	
+}
+
+entity RoutingResult{
+	routingFlow Long,
+	branch String,
+	floor String
+}
+
+entity ApproverInfo{
+	group String,
+	branch String,
+	flow String,
+	hubExchangeCode String,
+	approvalGroup String
+}
+
+entity LoanInfo{
+	cusDuty Float,
+	spouseDuty Float,
+	copaymentDuty Float
+}
+
+entity CheckList{
+	groupDesc String,
+	code String,
+	name String,
+	selectedValue String,
+	choose Boolean,
+	groupCode String,
+	type String,
+	conditional String
+}
+
+entity FIInfomation{
+	numOfDayOverdue Float,
+	maxLateDaysCurrent Long,
+	maxLateDaysPast Long,
+	loanTotalLimit Float,
+	loanMaxLimit Float,
+	loanQueryTime Long,
+	cIC4TotalCrdCardOustdAllFIL6M Float,
+	cIC5NoOfFIs Float,
+	cIC6RatioCrdCardOvdToTotalCrdCardDebt Float,
+	cIC7NoOfTimesOvd Float,
+	avgBalL6m Float,
+	avgSalAmtL6m Float,
+	avgTransAmtL6m Float,
+	minBalCaL6m Float,
+	avgIbTransAmtL6m Float,
+	cashVsTotCfAmtL6m Float,
+	yearsInRelationship Float
+}
+
+entity FIInfomationResponse{
+	hasUserFinalProduct Boolean,
+	hasLated10AtFI Boolean,
+	hasLated90dIn2Yrs Boolean,
+	hasLoanAtTCB Boolean,
+	hasLated10dAtTCB Boolean,
+	hasLated90dAtTCB Boolean,
+	province String,
+	resProvince String,
+	customerRelationship String
+}
+
+relationship OneToOne {
+	FIInfomationResponse{FIInfomation} to FIInfomation,	
+	PersonalInfo{FIInfomation} to FIInfomation,
+	PersonalInfo{LoanInfo} to LoanInfo,
+	PersonalInfo{SalaryIncome} to SalaryIncome,
+	PersonalInfo{RetireIncome} to RetireIncome,
+	IncomeResponse{BusinessIncome} to BusinessIncome,
+	IncomeResponse{SalaryIncome} to SalaryIncome,
+	IncomeResponse{VehicleIncome} to VehicleIncome,
+	IncomeResponse{HouseRentIncome} to HouseRentIncome,
+	IncomeResponse{ROAIncome} to ROAIncome,
+	IncomeResponse{TrustedIncome} to TrustedIncome,
+	IncomeResponse{DeclareIncome} to DeclareIncome,
+	PersonalInfo{Pd} to Pd,	
+	Case{El} to El,
+	Case{Lgd} to Lgd,
+	Case{Limit} to Limit,
+	Case{ApproverInfo} to ApproverInfo,
+	Case{Dti} to Dti,
+	Case{LoanPlan} to LoanPlan,	
+	Case{CreditCardLimit} to CreditCardLimit,
+	Case{PolicyResult} to PolicyResult,
+	Case{RoutingResult} to RoutingResult,
+	Case{Score} to Score,	
+	CollateralResponse{Collateral} to Collateral,
+	LoanPlanResposne{LoanPlan} to LoanPlan,
+	BusinessItem{SeftBusiness} to SeftBusiness	
+}
+
+relationship OneToMany{	
+	IncomeResponse{CheckList} to CheckList,
+	PersonalInfo{VehicleIncome} to VehicleIncome,
+	PersonalInfo{HouseRentIncome} to HouseRentIncome,
+	PersonalInfo{BusinessIncome} to BusinessIncome,
+	PersonalInfo{ROAIncome} to ROAIncome,
+	PersonalInfo{TrustedIncome} to TrustedIncome,
+	PersonalInfo{DeclareIncome} to DeclareIncome,
+	PersonalInfo{Collateral} to Collateral,
+	PersonalInfo{CheckList} to CheckList,
+	ROAIncome{ROAItem} to ROAItem,
+	TrustedIncome{TrustedItem} to TrustedItem,
+	Case{PersonalInfo} to PersonalInfo,
+	VehicleIncome{VehicleItem} to VehicleItem,
+	HouseRentIncome{HouseRentItem} to HouseRentItem,
+	BusinessIncome{BusinessItem} to BusinessItem,
+	TCBond{CheckList} to CheckList,
+	RealEstate{CheckList} to CheckList,
+	PassBook{CheckList} to CheckList,
+	SalaryIncome{CheckList} to CheckList,
+	RetireIncome{CheckList} to CheckList,
+	VehicleItem{CheckList} to CheckList,
+	HouseRentItem{CheckList} to CheckList,
+	BusinessItem{CheckList} to CheckList,
+	TrustedItem{CheckList} to CheckList,
+	DeclareItem{CheckList} to CheckList,
+	ROAItem{TCBond} to TCBond,
+	ROAItem{RealEstate} to RealEstate,
+	ROAItem{PassBook} to PassBook,
+	DeclareIncome{DeclareItem} to DeclareItem	
+}
