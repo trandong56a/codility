@@ -1,0 +1,42 @@
+package com.sample.jms;
+
+import javax.jms.*;
+
+import com.ibm.websphere.sib.api.jms.JmsConnectionFactory;
+import com.ibm.websphere.sib.api.jms.JmsFactoryFactory;
+
+public class MyReceiver {
+	public static void main(String[] args) {
+		try {
+			JmsFactoryFactory jmsFactory = JmsFactoryFactory.getInstance();
+			JmsConnectionFactory connectFactory = jmsFactory
+					.createConnectionFactory();
+			connectFactory
+					.setProviderEndpoints("10.101.3.48:7276:BootstrapBasicMessaging");
+			connectFactory.setBusName("SampleSIB");
+			Connection con = connectFactory.createConnection();
+			con.start();
+			// 2) create Queue session
+			Session ses = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			// 3) get the Queue object
+			Destination des = jmsFactory.createQueue("SampleQueue");
+			// 4)create QueueReceiver
+			MessageConsumer consumer = ses.createConsumer(des);
+
+			// 5) create listener object
+			MyListener listener = new MyListener();
+
+			// 6) register the listener object with receiver
+			consumer.setMessageListener(listener);
+
+			System.out.println("Receiver1 is ready, waiting for messages...");
+			System.out.println("press Ctrl+c to shutdown...");
+			while (true) {
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
