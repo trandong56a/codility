@@ -1,0 +1,49 @@
+package com.sample.jms;
+
+import java.io.BufferedReader;  
+import java.io.InputStreamReader;  
+
+import javax.jms.*;  
+
+import com.ibm.websphere.sib.api.jms.JmsConnectionFactory;
+import com.ibm.websphere.sib.api.jms.JmsFactoryFactory;
+  
+public class MySender {
+    public static void main(String[] args) {
+        try  
+        {  
+	        JmsFactoryFactory jmsFactoryFactory = JmsFactoryFactory.getInstance();
+	        JmsConnectionFactory connectionFactory = jmsFactoryFactory.createConnectionFactory();
+	        connectionFactory.setProviderEndpoints("10.101.3.48:7276:BootstrapBasicMessaging");
+	        connectionFactory.setBusName("SampleSIB");
+	        Connection con = connectionFactory.createConnection();
+        	con.start();
+        	Destination destination = jmsFactoryFactory.createQueue("SampleQueue");
+        	Session ses= con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        	MessageProducer producer = ses.createProducer(destination);
+            
+            //5) create TextMessage object  
+            TextMessage msg=ses.createTextMessage();  
+              
+            //6) write message  
+            BufferedReader b=new BufferedReader(new InputStreamReader(System.in));  
+            while(true)  
+            {
+                System.out.println("Enter Msg, end to terminate:");  
+                String s=b.readLine();  
+                if (s.equals("end"))  
+                    break;  
+                msg.setText(s);
+                
+                //7) send message  
+                producer.send(msg);  
+                System.out.println("Message successfully sent.");  
+            }
+            //8) connection close  
+            con.close();
+        }catch(Exception e)
+        {
+        	System.out.println(e);
+        }  
+    }
+}
